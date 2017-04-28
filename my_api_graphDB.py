@@ -1,3 +1,8 @@
+################################
+# @author: Qianru Zhou
+# @email: chowqianru@gmail.com
+# All rights reserved
+#################################
 from neo4j.v1 import GraphDatabase, basic_auth
 
 class findPath(object):
