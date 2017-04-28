@@ -1,4 +1,10 @@
 #!/usr/bin/python
+################################
+# @author: Qianru Zhou
+# @email: chowqianru@gmail.com
+# All rights reserved
+#################################
+
 from functools import partial
 from subprocess import check_output
 from mininet.net import Mininet
