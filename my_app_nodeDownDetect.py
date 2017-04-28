@@ -1,3 +1,9 @@
+################################
+# @author: Qianru Zhou
+# @email: chowqianru@gmail.com
+# All rights reserved
+#################################
+
 from my_api_sparql import run_query
 import time
 
