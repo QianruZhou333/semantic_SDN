@@ -1,3 +1,9 @@
+################################
+# @author: Qianru Zhou
+# @email: chowqianru@gmail.com
+# All rights reserved
+#################################
+
 from my_api_sparql import query_string_for_hosts, run_query
 from my_api_switch_ovs import SwitchAPI as API
 import eventlet
