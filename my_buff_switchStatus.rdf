@@ -1,0 +1,45 @@
+@prefix ns1: <http://home.eps.hw.ac.uk/~qz1/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ns1:s1_port1 a ns1:Port ;
+    ns1:hasMAC "16:40:1f:b2:5f:5e" ;
+    ns1:hasName "s1-eth1" ;
+    ns1:isIn ns1:s1 ;
+    ns1:port_no 1 .
+
+ns1:s1_port2 a ns1:Port ;
+    ns1:hasMAC "c2:f6:48:90:36:3e" ;
+    ns1:hasName "s1-eth2" ;
+    ns1:isIn ns1:s1 ;
+    ns1:port_no 2 .
+
+ns1:s1_port3 a ns1:Port ;
+    ns1:hasMAC "5e:5e:4b:bf:96:9f" ;
+    ns1:hasName "s1-eth3" ;
+    ns1:isIn ns1:s1 ;
+    ns1:port_no 3 .
+
+ns1:s1_port4 a ns1:Port ;
+    ns1:hasMAC "66:d1:7e:cc:8c:0e" ;
+    ns1:hasName "s1-eth4" ;
+    ns1:isIn ns1:s1 ;
+    ns1:port_no 4 .
+
+ns1:s1_port5 a ns1:Port ;
+    ns1:hasMAC "ee:53:af:30:1e:73" ;
+    ns1:hasName "s1-eth5" ;
+    ns1:isIn ns1:s1 ;
+    ns1:port_no 5 .
+
+ns1:s1 a ns1:Switch ;
+    ns1:hasID 1 ;
+    ns1:hasName "s1" ;
+    ns1:hasPort ns1:s1_port1,
+        ns1:s1_port2,
+        ns1:s1_port3,
+        ns1:s1_port4,
+        ns1:s1_port5 .
+

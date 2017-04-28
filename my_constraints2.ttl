@@ -1,0 +1,117 @@
+@prefix : <http://home.eps.hw.ac.uk/~qz1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix stardog: <tag:stardog:api:> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+:Switch a owl:Class ;
+        rdfs:subClassOf
+        [ owl:onProperty :hasID       ; owl:maxCardinality 1 ] ,
+        [ owl:onProperty :hasID       ; owl:minCardinality 1 ] ,
+        [ owl:onProperty :hasName     ; owl:maxCardinality 1 ] ,
+        [ owl:onProperty :hasName     ; owl:minCardinality 1 ] ,
+        [ owl:onProperty :hasHost     ; owl:minCardinality 0 ] .
+
+:Host a owl:Class ;
+      rdfs:subClassOf 
+      [ owl:onProperty :hasIPv4       ; owl:minCardinality 1 ] ,
+      [ owl:onProperty :connectToPort ; owl:minCardinality 1 ] ,
+      [ owl:onProperty :hasMAC        ; owl:minCardinality 1 ] .
+
+:Port a owl:Class ;
+      rdfs:subClassOf 
+      [ owl:onProperty :hasMAC        ; owl:maxCardinality 1 ] ,
+      [ owl:onProperty :hasMAC        ; owl:minCardinality 1 ] ,
+      [ owl:onProperty :hasName       ; owl:maxCardinality 1 ] ,
+      [ owl:onProperty :hasName       ; owl:minCardinality 1 ] ,
+      [ owl:onProperty :port_no       ; owl:maxCardinality 1 ] ,
+      [ owl:onProperty :port_no       ; owl:minCardinality 1 ] ,
+      [ owl:onProperty :isUp          ; owl:maxCardinality 1 ] ,
+      [ owl:onProperty :isUp          ; owl:minCardinality 1 ] ,
+      [ owl:onProperty :isIn          ; owl:maxCardinality 1 ] ,
+      [ owl:onProperty :isIn          ; owl:minCardinality 1 ] .
+
+:Flow a owl:Class ;
+      rdfs:subClassOf 
+      [ owl:onProperty :hasAction     ; owl:minCardinality 1 ] .
+
+:PathFlow a owl:Class ; rdfs:subClassOf :Flow .
+:Path     a owl:Class .
+:ToPath   a owl:Class ; rdfs:subClassOf :Path .
+:FromPath a owl:Class ; rdfs:subClassOf :Path .
+:Action   a owl:Class . # :ActionOutput is not a class, is an String "OUTPUT".
+
+:connectToPort a owl:ObjectProperty ; rdfs:domain :Host ; 
+                                      rdfs:range  :Port .
+
+:arp_op  a owl:DatatypeProperty  ; rdfs:domain :Flow .
+:arp_sha a owl:DatatypeProperty  ; rdfs:domain :Flow .
+:arp_spa a owl:DatatypeProperty  ; rdfs:domain :Flow .
+:arp_tha a owl:DatatypeProperty  ; rdfs:domain :Flow .
+:arp_tpa a owl:DatatypeProperty  ; rdfs:domain :Flow .
+:cookie  a owl:DatatypeProperty  ; rdfs:domain :Flow .                                  
+:eth_dst a owl:DatatypeProperty  ; rdfs:domain :Flow .
+:eth_src a owl:DatatypeProperty  ; rdfs:domain :Flow .
+:eth_type a owl:DatatypeProperty ; rdfs:domain :Flow .
+:flags   a owl:DatatypeProperty  ; rdfs:domain :Flow .
+:hard_timeout a owl:DatatypeProperty ; rdfs:domain :Flow .
+:hasAction   a owl:DatatypeProperty ; rdfs:domain :Flow .
+:icmpv4_code a owl:DatatypeProperty ; rdfs:domain :Flow .
+:icmpv4_type a owl:DatatypeProperty ; rdfs:domain :Flow .
+:icmpv6_code a owl:DatatypeProperty ; rdfs:domain :Flow .
+:icmpv6_type a owl:DatatypeProperty ; rdfs:domain :Flow .
+:idle_timeout a owl:DatatypeProperty ; rdfs:domain :Flow .
+:in_phy_port  a owl:DatatypeProperty ; rdfs:domain :Flow .
+:in_port a owl:DatatypeProperty ; rdfs:domain :Flow .
+:ip_dscp a owl:DatatypeProperty ; rdfs:domain :Flow .
+:ip_ecn  a owl:DatatypeProperty ; rdfs:domain :Flow .
+:ip_proto a owl:DatatypeProperty ; rdfs:domain :Flow .
+:ipv4_dst a owl:DatatypeProperty ; rdfs:domain :Flow .
+:ipv4_src a owl:DatatypeProperty ; rdfs:domain :Flow .
+:ipv6_dst a owl:DatatypeProperty ; rdfs:domain :Flow .
+:ipv6_exthdr a owl:DatatypeProperty ; rdfs:domain :Flow .
+:ipv6_flabel a owl:DatatypeProperty ; rdfs:domain :Flow .
+:ipv6_nd_sll a owl:DatatypeProperty ; rdfs:domain :Flow .
+:ipv6_nd_target a owl:DatatypeProperty ; rdfs:domain :Flow .
+:ipv6_nd_tll a owl:DatatypeProperty ; rdfs:domain :Flow .
+:ipv6_src a owl:DatatypeProperty ; rdfs:domain :Flow .
+:metadata a owl:DatatypeProperty ; rdfs:domain :Flow .
+:mpls_bos a owl:DatatypeProperty ; rdfs:domain :Flow .
+:mpls_label a owl:DatatypeProperty ; rdfs:domain :Flow .
+:mpls_tc a owl:DatatypeProperty  ; rdfs:domain :Flow .
+:pbb_isid a owl:DatatypeProperty ; rdfs:domain :Flow .
+:pbb_uca a owl:DatatypeProperty  ; rdfs:domain :Flow .
+:sctp_dst a owl:DatatypeProperty ; rdfs:domain :Flow .
+:sctp_src a owl:DatatypeProperty ; rdfs:domain :Flow .
+:table_id a owl:DatatypeProperty ; rdfs:domain :Flow .
+:tcp_dst a owl:DatatypeProperty  ; rdfs:domain :Flow .
+:tcp_flags a owl:DatatypeProperty ; rdfs:domain :Flow .
+:tcp_src a owl:DatatypeProperty   ; rdfs:domain :Flow .
+:tunnel_id a owl:DatatypeProperty ; rdfs:domain :Flow .
+:udp_dst a owl:DatatypeProperty   ; rdfs:domain :Flow .
+:udp_src a owl:DatatypeProperty   ; rdfs:domain :Flow .
+:vlan_pcp a owl:DatatypeProperty  ; rdfs:domain :Flow .
+:vlan_vid a owl:DatatypeProperty  ; rdfs:domain :Flow .
+:hasAction a owl:ObjectProperty ; rdfs:domain :Flow   ; rdfs:range :Action .  
+
+:toPort a owl:ObjectProperty    ; rdfs:domain :Action ; rdfs:range :Port .
+:hasType a owl:DatatypeProperty ; rdfs:domain :Action .
+
+:hasFlow a owl:ObjectProperty   ; rdfs:domain :Switch ; rdfs:range :Flow .
+:hasHost a owl:ObjectProperty   ; rdfs:domain :Switch ; rdfs:range :Host .
+:hasID a owl:DatatypeProperty     ; rdfs:domain :Switch .
+
+:hasName a owl:ObjectProperty  ; rdfs:domain :Port , :Switch , :Host .
+:isIn a owl:ObjectProperty     ; rdfs:domain :Port ; rdfs:range :Switch , :Host.
+:isUp a owl:DatatypeProperty     ; rdfs:domain :Port .
+:port_no a owl:DatatypeProperty  ; rdfs:domain :Port .
+:hasIPv4 a owl:DatatypeProperty  ; rdfs:domain :Port .
+:hasMAC  a owl:DatatypeProperty  ; rdfs:domain :Port .
+
+:hopCount a owl:DatatypeProperty ; rdfs:domain :PathFlow .
+:path a owl:ObjectProperty     ; rdfs:domain :PathFlow ; rdfs:range :Path .
+
+:consistOf a owl:ObjectProperty ; rdfs:domain :Path ; rdfs:range :PathFlow .
