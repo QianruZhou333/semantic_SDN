@@ -1,3 +1,9 @@
+################################
+# @author: Qianru Zhou
+# @email: chowqianru@gmail.com
+# All rights reserved
+#################################
+
 # runs with ofctl_rest.py
 
 from rdflib import Graph, plugin, Namespace, Literal
