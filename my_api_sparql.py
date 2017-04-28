@@ -1,7 +1,7 @@
 ################################################################################
-# The TOUCAN Project 
 # semantic SDN management                                                      #
-# author: Qianru Zhou  (qz1@hw.ac.uk)                                          #
+# @author: Qianru Zhou  
+# @email: chowqianru@gmail.com
 ################################################################################
 
 import urllib2
