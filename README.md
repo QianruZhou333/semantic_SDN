@@ -13,5 +13,5 @@ methods provided in the open API
 demonstration of the applications developed based on the API provided. 
 ## my_topo_add_*_with_neo.py
 the knowledge base generator 
-** = mn: adopts the Mininet API to extract the information.
-* = ryu: adopts the Ryu API to extract the information.
+ * = mn: adopts the Mininet API to extract the information.
+ * = ryu: adopts the Ryu API to extract the information.
