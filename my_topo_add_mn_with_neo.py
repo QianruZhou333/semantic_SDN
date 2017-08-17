@@ -24,7 +24,7 @@ class AddTopology():
 		self.g = Graph()
 		self.file_abs = '../my_buff_switchStatus_mn.rdf'
 		# graph database initiation
-		self.driver = GraphDatabase.driver("bolt://localhost", auth=basic_auth("neo4j", "Sylvia2561435"))
+		self.driver = GraphDatabase.driver("bolt://localhost", auth=basic_auth("neo4j", "neo4j"))
 		self.session = self.driver.session()
 		# grapheekdb initiation
 		# self.g2 = LocalMemoryGraph()
